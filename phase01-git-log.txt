@@ -1,0 +1,17 @@
+commit 48c0e3ab9f22bdc8ae2895249780618e73c4191e (HEAD -> main)
+Author: dowellgandy <dowell.gandy@gmail.com>
+Date:   Tue Feb 27 02:48:16 2024 -0500
+
+    Phase01 Complete
+
+commit 45890afd6c9b7dc86ebed808b4dc0e481e466c38 (origin/main)
+Author: dowellgandy <dowell.gandy@gmail.com>
+Date:   Sun Feb 25 07:31:42 2024 -0500
+
+    cleanup
+
+commit 8760347e6edb3d90252666aa44939c1778e8631f
+Author: dowellgandy <dowell.gandy@gmail.com>
+Date:   Tue Feb 20 09:58:45 2024 -0500
+
+    Init commit
