@@ -1,9 +1,7 @@
 <?php
 
 require_once('../../private/initialize.php');
-include(SHARED_PATH . '/salamander-header.php'); 
 
-echo "<h1>Edit Salamander</h1>";
 
 if(is_get_request()) {
     $id = $_GET['id'] ?? '1';
@@ -18,14 +16,14 @@ if(is_post_request()) {
     $salamander['name'] = $_POST['name'];
     $salamander['habitat'] = $_POST['habitat'];
     $salamander['description'] = $_POST['description'];
-
+    
     $sql = "UPDATE salamander SET ";
     $sql .= "name='" . $salamander['name'] . "', ";
     $sql .= "habitat='" . $salamander['habitat'] . "', ";
     $sql .= "description='" . $salamander['description'] . "' ";
     $sql .= "WHERE id='" . $salamander['id'] ."' ";
     $sql .= "LIMIT 1";
-
+    
     $result = mysqli_query($db, $sql);
     if($result) {
         redirect_to((url_for('salamanders/show.php?id=' . $id)));
@@ -35,11 +33,14 @@ if(is_post_request()) {
         db_disconnect($db);
         exit;
     }
-
+    
 }
 else {
     $salamander = find_salamander_by_id($id);
 }
+
+include(SHARED_PATH . '/salamander-header.php'); 
+echo "<h1>Edit Salamander</h1>";
 
 ?>
 
