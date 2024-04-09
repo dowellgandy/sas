@@ -1,7 +1,7 @@
 <?php
 
 require_once('../../private/initialize.php');
-include(SHARED_PATH . '/salamander-header.php'); 
+
 $pageTitle = 'Edit Salamander';
 $id = $_GET['id'];
 // need to remove this line but right now it works.
@@ -24,6 +24,8 @@ if(is_post_request()) {
    else {
     $salamander = find_salamander_by_id($id);
    }
+
+   include(SHARED_PATH . '/salamander-header.php'); 
 
    echo display_errors($errors);
 ?>

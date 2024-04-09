@@ -1,15 +1,12 @@
 <?php
 
 require_once('../../private/initialize.php');
-include(SHARED_PATH . '/salamander-header.php'); 
 
 if(is_post_request()) {
     $salamander = [];
     $salamander['name'] = $_POST['name'] ?? '';
     $salamander['habitat'] = $_POST['habitat'] ?? '';
     $salamander['description'] = $_POST['description'];
-
-    insert_salamander($salamander);
     
     $result = insert_salamander($salamander);
     if($result === true) {
@@ -21,8 +18,10 @@ if(is_post_request()) {
     }
 }
 else {
-
+    
 }
+
+include(SHARED_PATH . '/salamander-header.php'); 
 
 include(SHARED_PATH . '/salamander-footer.php'); 
 
