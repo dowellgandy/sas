@@ -37,8 +37,8 @@ function insert_salamander($salamander)
     mysqli_stmt_bind_param($stmt, "sss", $name, $habitat, $description);
     $name = $salamander['name'];
     $habitat = $salamander['habitat'];
-    $sql = $salamander['description'];
-    $result = mysqli_query($db, $sql);
+    $description = $salamander['description'];
+    $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
         return true;
@@ -59,13 +59,17 @@ function update_salamander($salamander)
     }
 
     $sql = "UPDATE salamander SET ";
-    $sql .= "name='" .  $salamander['name'] . "', ";
-    $sql .= "habitat='" .  $salamander['habitat'] . "',";
-    $sql .= "description='" .  $salamander['description'] . "' ";
-    $sql .= "WHERE id='" . $salamander['id'] . "' ";
+    $sql .= "name = ?, habitat = ?, description = ? ";
+    $sql .= "WHERE id = ? ";
     $sql .= "LIMIT 1";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "sssi", $name, $habitat, $description, $id);
+    $name = $salamander['name'];
+    $habitat = $salamander['habitat'];
+    $description = $salamander['description'];
+    $id = $salamander['id'];
+    $result = mysqli_stmt_execute($stmt);
 
-    $result = mysqli_query($db, $sql);
     if ($result) {
         return true;
     } else {
